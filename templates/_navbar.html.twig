@@ -4,16 +4,16 @@
         <a class="navbar-brand" href="{{ path('app_default_index') }}">Sensio TV+</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link{{ current_route != 'app_default_index' ?: ' active' }}" href="{{ path('app_default_index') }}">Home</a>
+                <a class="nav-link{{ current_route != 'app_default_index' ? '' : ' active' }}" href="{{ path('app_default_index') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ current_route != 'app_default_contact' ?: ' active' }}" href="{{ path('app_default_contact') }}">Contact</a>
+                <a class="nav-link{{ current_route != 'app_default_contact' ? '' : ' active' }}" href="{{ path('app_default_contact') }}">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ current_route != 'app_book_index' ?: ' active' }}" href="{{ path('app_book_index') }}">Book</a>
+                <a class="nav-link{{ current_route != 'app_book_index' ? '' : ' active' }}" href="{{ path('app_book_index') }}">Book</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ current_route != 'app_movie_index' ?: ' active' }}" href="{{ path('app_movie_index') }}">Movie</a>
+                <a class="nav-link{{ current_route != 'app_movie_index' ? '' : ' active' }}" href="{{ path('app_movie_index') }}">Movie</a>
             </li>
         </ul>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,13 +19,11 @@ class MovieController extends AbstractController
     }
 
     #[Route('/{id<\d+>}', name: 'details')]
-    public function details(): Response
+    public function details(?Movie $movie): Response
     {
-        $movie = [
-            'title' => 'Star Wars',
-            'releasedAt' => new \DateTime('1977-05-25'),
-            'genres' => ['Action', 'Adventure', 'Fantasy'],
-        ];
+        if (!$movie) {
+            throw $this->createNotFoundException('Movie not found');
+        }
 
         return $this->render('movie/details.html.twig', [
             'movie' => $movie,
