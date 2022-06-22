@@ -21,6 +21,8 @@ class MovieTransformer implements TransformerInterface
             ->setTitle($data['Title'])
             ->setPoster($data['Poster'])
             ->setCountry($data['Country'])
+            ->setImdbId($data['imdbID'])
+            ->setRated($data['Rated'])
             ->setReleasedAt(new \DateTimeImmutable($date))
             ->setPrice(5.0)
         ;
@@ -35,6 +37,6 @@ class MovieTransformer implements TransformerInterface
 
     public function entityToArray(object $entity): array
     {
-        // TODO: Implement entityToArray() method.
+        throw new \RuntimeException('Method not implemented');
     }
 }
