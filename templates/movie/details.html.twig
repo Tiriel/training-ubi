@@ -7,6 +7,7 @@
     <h1>Movie : {{ movie.title }}</h1>
 
     <ul>
+        <li>Id: {{ movie.id }}</li>
         <li>Released : {{ movie.releasedAt|date('Y M d') }}</li>
         <li>Country : {{ movie.country }}</li>
         <li>Genres: {{ movie.genres|reduce((carry, genre) => carry == '' ? genre.name : carry ~ ', ' ~ genre.name) }}</li>

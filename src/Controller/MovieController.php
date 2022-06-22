@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Movie;
+use App\Provider\MovieProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,12 +19,10 @@ class MovieController extends AbstractController
         ]);
     }
 
-    #[Route('/{id<\d+>}', name: 'details')]
-    public function details(?Movie $movie): Response
+    #[Route('/{title}', name: 'details')]
+    public function details(string $title, MovieProvider $provider): Response
     {
-        if (!$movie) {
-            throw $this->createNotFoundException('Movie not found');
-        }
+        $movie = $provider->getMovieByTitle($title);
 
         return $this->render('movie/details.html.twig', [
             'movie' => $movie,

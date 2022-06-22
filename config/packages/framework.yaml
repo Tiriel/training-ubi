@@ -6,9 +6,9 @@ framework:
     http_client:
         scoped_clients:
             omdb.client:
-                base_uri: 'http://www.omdbapi.org'
+                base_uri: 'http://www.omdbapi.com'
                 query:
-                    apikey: ''
+                    apikey: '%env(string:OMDB_API_KEY)%'
             github.client:
                 scope: 'https://api\.github\.com'
                 headers:
