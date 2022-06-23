@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Security\Voter\BookVoter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,8 +23,10 @@ class BookController extends AbstractController
     // #[Route('/{id}', name: 'details', requirements: ['id' => '\d+'], defaults: ['id' => 1], methods: ['GET'])]
     // #[Route('/{id<\d+>?1}', name: 'details', methods: ['GET'], condition: 'request.headers.get("My-Header") == "foo"')]
     #[Route('/{id<\d+>?1}', name: 'details', methods: ['GET'])]
-    public function details(int $id): Response
+    public function details(Book $book): Response
     {
+        $this->denyAccessUnlessGranted(BookVoter::VIEW, $book);
+
         return $this->render('book/index.html.twig', [
             'controller_name' => 'BookController',
         ]);
